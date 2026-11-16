@@ -299,7 +299,7 @@
   ]},
 { "hdr": "700", "rax": "708", "dbg": true, "cmd": {"22": "1621"}, "freq": 1,
   "signals": [
-    {"id": "VENZAHYBRID_GEAR_700", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Gear"}
+    {"id": "VENZAHYBRID_GEAR_700", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Gear", "suggestedMetric": "gear"}
   ]},
 { "hdr": "700", "rax": "708", "dbg": true, "cmd": {"22": "1622"}, "freq": 1,
   "signals": [
@@ -707,8 +707,8 @@
   ]},
 { "hdr": "7B0", "rax": "7B8", "dbg": true, "cmd": {"21": "47"}, "freq": 0.25,
   "signals": [
-    {"id": "VENZAHYBRID_LAT_G",       "path": "Orientation", "fmt": {           "len": 8,  "max": 2.5,    "min": -2.5,  "div": 50,                 "sign": true, "unit": "gravity" }, "name": "Lateral g"},
-    {"id": "VENZAHYBRID_LNG_G",       "path": "Orientation", "fmt": {"bix": 8,  "len": 8,  "max": 2.5,    "min": -2.5,  "div": 50,                 "sign": true, "unit": "gravity" }, "name": "Longitudinal g"},
+    {"id": "VENZAHYBRID_LAT_G",       "path": "Orientation", "fmt": {           "len": 8,  "max": 2.5,    "min": -2.5,  "div": 50,                 "sign": true, "unit": "gravity" }, "name": "Lateral g",                  "suggestedMetric": "lateralAcceleration"},
+    {"id": "VENZAHYBRID_LNG_G",       "path": "Orientation", "fmt": {"bix": 8,  "len": 8,  "max": 2.5,    "min": -2.5,  "div": 50,                 "sign": true, "unit": "gravity" }, "name": "Longitudinal g",             "suggestedMetric": "longitudinalAcceleration"},
     {"id": "VENZAHYBRID_YAW_RATE",    "path": "Orientation", "fmt": {"bix": 16, "len": 8,  "max": 127,    "min": -128,             "add": -128,                  "unit": "degrees" }, "name": "Yaw rate value (degrees/se"},
     {"id": "VENZAHYBRID_STEER_ANGLE", "path": "Control",     "fmt": {"bix": 24, "len": 16, "max": 3276.7, "min": -3276, "div": 10, "add": -3276.8,               "unit": "degrees" }, "name": "Steering wheel angle"}
   ]},
@@ -840,7 +840,7 @@
   "signals": [
     {"id": "VENZAHYBRID_TAIL_CANCEL",       "path": "Control",   "fmt": {"bix": 2,  "len": 1, "max": 1, "unit": "offon" }, "name": "Tail cancel"},
     {"id": "VENZAHYBRID_P_SEATBELT_BUCKLE", "path": "Seatbelts", "fmt": {"bix": 8,  "len": 1, "max": 1, "unit": "offon" }, "name": "P-seatbelt buckle"},
-    {"id": "VENZAHYBRID_CHECK_ENGINE",      "path": "Control",   "fmt": {"bix": 15, "len": 1, "max": 1, "unit": "offon" }, "name": "Check engine"}
+    {"id": "VENZAHYBRID_CHECK_ENGINE",      "path": "Control",   "fmt": {"bix": 15, "len": 1, "max": 1, "unit": "offon" }, "name": "Check engine",      "suggestedMetric": "checkEngineLightOn"}
   ]},
 { "hdr": "7C0", "rax": "7C8", "dbg": true, "cmd": {"21": "13"}, "freq": 1,
   "signals": [
@@ -1003,7 +1003,7 @@
   ]},
 { "hdr": "7D2", "rax": "7DA", "fcm1": true, "dbg": true, "cmd": {"22": "1061"}, "freq": 1,
   "signals": [
-    {"id": "VENZAHYBRID_SHIFT", "path": "Transmission", "name": "Shift position", "fmt": {"len": 8, "map": {
+    {"id": "VENZAHYBRID_SHIFT", "path": "Transmission", "name": "Shift position", "suggestedMetric": "gearSelector", "fmt": {"len": 8, "map": {
           "0": { "description": "Park",    "value": "P" },
           "2": { "description": "Reverse", "value": "R" },
           "4": { "description": "Neutral", "value": "N" },
@@ -1193,8 +1193,8 @@
     {"id": "VENZAHYBRID_CALCULATED_LOAD_7E0",      "path": "Engine",   "fmt": {            "len": 8,  "max": 100,                "mul": 100, "div": 255,               "unit": "percent"           }, "name": "Calculated load_7e0"},
     {"id": "VENZAHYBRID_VEHICLE_LOAD",             "path": "Engine",   "fmt": {"bix": 8,   "len": 16, "max": 100,                "mul": 100, "div": 65535,             "unit": "percent"           }, "name": "Vehicle load"},
     {"id": "VENZAHYBRID_MAF",                      "path": "Engine",   "fmt": {"bix": 24,  "len": 16, "max": 655.35,                                                   "unit": "gramsPerSecond"    }, "name": "Mass air flow",                     "suggestedMetric": "massAirFlow"},
-    {"id": "VENZAHYBRID_MAP",                      "path": "Engine",   "fmt": {"bix": 40,  "len": 8,  "max": 255,                                                      "unit": "kilopascal"        }, "name": "Manifold absolute pressure"},
-    {"id": "VENZAHYBRID_INTAKE_AIR",               "path": "Engine",   "fmt": {"bix": 48,  "len": 8,  "max": 215,    "min": -40,                           "add": -40, "unit": "celsius"           }, "name": "Intake air"},
+    {"id": "VENZAHYBRID_MAP",                      "path": "Engine",   "fmt": {"bix": 40,  "len": 8,  "max": 255,                                                      "unit": "kilopascal"        }, "name": "Manifold absolute pressure",        "suggestedMetric": "absoluteBoostPressure"},
+    {"id": "VENZAHYBRID_INTAKE_AIR",               "path": "Engine",   "fmt": {"bix": 48,  "len": 8,  "max": 215,    "min": -40,                           "add": -40, "unit": "celsius"           }, "name": "Intake air",                        "suggestedMetric": "intakeAirTemperature"},
     {"id": "VENZAHYBRID_AMBIENT_T",                "path": "Engine",   "fmt": {"bix": 56,  "len": 8,  "max": 215,    "min": -40,                           "add": -40, "unit": "celsius"           }, "name": "Ambient temperature"},
     {"id": "VENZAHYBRID_ATMOSPHERE_PRESSURE",      "path": "Engine",   "fmt": {"bix": 64,  "len": 8,  "max": 255,                                                      "unit": "kilopascal"        }, "name": "Atmosphere pressure"},
     {"id": "VENZAHYBRID_COOLANT_TEMP",             "path": "Engine",   "fmt": {"bix": 72,  "len": 8,  "max": 215,                                                      "unit": "celsius"           }, "name": "Coolant temp"},
@@ -1233,7 +1233,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "06"}, "freq": 1,
   "signals": [
-    {"id": "VENZAHYBRID_MIL",                             "path": "DTCs", "fmt": {           "len": 1,  "max": 1,     "unit": "offon"      }, "name": "MIL"},
+    {"id": "VENZAHYBRID_MIL",                             "path": "DTCs", "fmt": {           "len": 1,  "max": 1,     "unit": "offon"      }, "name": "MIL",                                       "suggestedMetric": "checkEngineLightOn"},
     {"id": "VENZAHYBRID_NUMBER_OF_EMISSION_DTC",          "path": "DTCs", "fmt": {"bix": 1,  "len": 7,  "max": 127,   "unit": "scalar"     }, "name": "Number of emission DTC"},
     {"id": "VENZAHYBRID_COMPLETE_PARTS_MONITOR_AVAIL",    "path": "DTCs", "fmt": {"bix": 13, "len": 1,  "max": 1,     "unit": "offon"      }, "name": "Complete parts monitor_avail"},
     {"id": "VENZAHYBRID_FUEL_SYSTEM_MONITOR_AVAIL",       "path": "DTCs", "fmt": {"bix": 14, "len": 1,  "max": 1,     "unit": "offon"      }, "name": "Fuel system monitor_avail"},
@@ -1271,7 +1271,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "0F"}, "freq": 1,
   "signals": [
-    {"id": "VENZAHYBRID_IAT_21", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Intake air temperature"}
+    {"id": "VENZAHYBRID_IAT_21", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Intake air temperature", "suggestedMetric": "intakeAirTemperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "10"}, "freq": 1,
   "signals": [
@@ -1489,7 +1489,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "85"}, "freq": 0.5,
   "signals": [
-    {"id": "VENZAHYBRID_GEAR",        "path": "Transmission", "fmt": {          "len": 8, "max": 20, "unit": "scalar" }, "name": "Gear"},
+    {"id": "VENZAHYBRID_GEAR",        "path": "Transmission", "fmt": {          "len": 8, "max": 20, "unit": "scalar" }, "name": "Gear",         "suggestedMetric": "gear"},
     {"id": "VENZAHYBRID_GEAR_LOCKUP", "path": "Transmission", "fmt": {"bix": 8, "len": 1, "max": 1,  "unit": "offon"  }, "name": "Gear lock-up", "description": "Mechanism within the automatic transmission that momentarily locks the gears during gear changes, providing a smoother and more efficient transition between different gears, especially when accelerating or decelerating; essentially helps minimize power loss and jerkiness during gear shifts."}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "B2"}, "freq": 1,
@@ -1513,7 +1513,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "D3"}, "freq": 0.25,
   "signals": [
-    {"id": "VENZAHYBRID_CRUISE_CTRL_SPD", "path": "Movement", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Cruise control speed"},
+    {"id": "VENZAHYBRID_CRUISE_CTRL_SPD", "path": "Movement", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Cruise control speed", "suggestedMetric": "cruiseSetSpeed"},
     {"id": "VENZAHYBRID_CRUISE_CTRL_ON",  "path": "Engine",   "fmt": {"bix": 25, "len": 1, "max": 1,   "unit": "offon"             }, "name": "Cruise control on"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"21": "D9"}, "freq": 5,
@@ -1913,10 +1913,10 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"21": "D3"}, "freq": 1,
   "signals": [
-    {"id": "VENZAHYBRID_CRUISE_SPD",      "path": "Control",      "fmt": {           "len": 8, "max": 255,                "unit": "kilometersPerHour" }, "name": "Cruise control set speed"},
+    {"id": "VENZAHYBRID_CRUISE_SPD",      "path": "Control",      "fmt": {           "len": 8, "max": 255,                "unit": "kilometersPerHour" }, "name": "Cruise control set speed",            "suggestedMetric": "cruiseSetSpeed"},
     {"id": "VENZAHYBRID_CRUISE_THROTTLE", "path": "Control",      "fmt": {"bix": 8,  "len": 8, "max": 100, "mul": 0.3922, "unit": "percent"           }, "name": "Cruise control throttle opening"},
     {"id": "VENZAHYBRID_SHIFT_D",         "path": "Transmission", "fmt": {"bix": 16, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Shift in drive"},
-    {"id": "VENZAHYBRID_CRUISE",          "path": "Control",      "fmt": {"bix": 17, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Cruise control active"},
+    {"id": "VENZAHYBRID_CRUISE",          "path": "Control",      "fmt": {"bix": 17, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Cruise control active",               "suggestedMetric": "cruiseActive"},
     {"id": "VENZAHYBRID_CRUISE_IND",      "path": "Control",      "fmt": {"bix": 18, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Cruise control indicator"},
     {"id": "VENZAHYBRID_CRUISE_READY",    "path": "Control",      "fmt": {"bix": 21, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Cruise control ready"},
     {"id": "VENZAHYBRID_CRUISE_MAIN",     "path": "Control",      "fmt": {"bix": 23, "len": 1, "max": 1,                  "unit": "offon"             }, "name": "Cruise control main switch"},
